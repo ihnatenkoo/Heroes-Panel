@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 // Активный фильтр имеет класс active
 
 const HeroesFilters = () => {
-    const {activeFilter, filters} = useSelector(state=> state);
+    const {activeFilter, filters} = useSelector(state=> state.filters);
     const dispatch = useDispatch();
     const {request} = useHttp();
    
