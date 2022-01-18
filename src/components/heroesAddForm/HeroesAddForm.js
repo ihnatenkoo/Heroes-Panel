@@ -20,7 +20,7 @@ const HeroesAddForm = () => {
     const [description, setDescription] = useState("");
     const [element, setElement] = useState("");
 
-    const {heroes, filters} = useSelector(state => state);
+    const {filters} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -35,8 +35,9 @@ const HeroesAddForm = () => {
         }
       
         request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-        .then(dispatch(heroAdd([...heroes, newHero])))
-        .catch(console.log("Error"))
+            .then(console.log("OK"))
+            .then(dispatch(heroAdd(newHero)))
+            .catch(console.log("Error"))
       
         setName("");
         setDescription("");
@@ -45,7 +46,7 @@ const HeroesAddForm = () => {
 
     const renderOptions = (filters) => {
         return filters.map(item => {
-            if (item.name === "all") return;
+            if (item.name === "all") return null;
             return (
                 <option value={item.name} key={uuidv4()}>{item.label}</option>
             )

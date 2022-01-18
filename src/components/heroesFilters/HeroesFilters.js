@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { onFilterChange } from "../../actions";
-import { getAllFilters } from "../../actions";
+import { onFilterChange,  getAllFilters} from "../../actions";
 import { useHttp } from "../../hooks/http.hook";
 import { v4 as uuidv4 } from 'uuid';
 // Задача для этого компонента:
@@ -16,24 +15,21 @@ const HeroesFilters = () => {
    
     useEffect(() => {
         getFilters();
+         // eslint-disable-next-line
     }, [])
 
     const getFilters = () => {
         request("http://localhost:3001/filters")
-        .then(console.log("OK"))                    /// в консоли и ОК и Error?
-        .then(data => dispatch(getAllFilters(data)))
-        .catch(console.log("Error"))     
-    }
-
-    const addFilter = (filter) => {
-        dispatch(onFilterChange(filter))
+            .then(console.log("OK"))             
+            .then(data => dispatch(getAllFilters(data)))
+            .catch(console.log("Error"))     
     }
 
     const renderFilterBtn = (filters) => {
-        return filters.map((item,i) => 
+        return filters.map(item => 
             (<button 
                 key={uuidv4()}
-                onClick={() => addFilter(item.name)} 
+                onClick={() => dispatch(onFilterChange(item.name))} 
                 className={`btn ${item.className} ${item.name === activeFilter   ? "active" : ""}`}>
                 {item.label}
             </button>))

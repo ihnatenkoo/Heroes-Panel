@@ -1,5 +1,6 @@
 const initialState = {
     heroes: [],
+    filteredHeroes: [],
     heroesLoadingStatus: 'idle',
     activeFilter: 'all',
     filters: []
@@ -16,7 +17,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 heroes: action.payload,
-                heroesLoadingStatus: 'idle'
+                heroesLoadingStatus: 'idle',
+                filteredHeroes: state.activeFilter === 'all' 
+                                ? action.payload
+                                : action.payload.filter(item => item.element === state.activeFilter)
             }
         case 'HEROES_FETCHING_ERROR':
             return {
@@ -24,20 +28,31 @@ const reducer = (state = initialState, action) => {
                 heroesLoadingStatus: 'error'
             }
         case 'HERO_DELETE': 
+            const newArr = state.heroes.filter(hero => hero.id !== action.payload);
             return {
                 ...state,
-                heroes: action.payload
+                heroes: newArr,
+                filteredHeroes: state.activeFilter === 'all' 
+                                ? newArr
+                                : newArr.filter(item => item.element === state.activeFilter)
             }
         case 'HERO_ADD': {
+            const newArr = [...state.heroes, action.payload]
             return {
                 ...state,
-                heroes: action.payload
+                heroes: newArr,
+                filteredHeroes: state.activeFilter === 'all' 
+                                ? newArr
+                                : newArr.filter(item => item.element === state.activeFilter)
             }
         }
         case 'FILTER_CHANGE': 
             return {
                 ...state,
-                activeFilter: action.payload
+                activeFilter: action.payload,
+                filteredHeroes: action.payload === 'all' 
+                                ? state.heroes
+                                : state.heroes.filter(item => item.element === action.payload)
             }
         case 'GET_ALL_FILTERS': {
             return {
