@@ -1,33 +1,39 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
+      "id": "e8c265df-e3fd-4512-87f4-d031f948cf51",
+      "name": "KNULL",
+      "description": "The god of the abyss from the beginning of time, Knull has warred against the light, creating the Symbiotes to further his cause.",
+      "element": "earth"
+    },
+    {
+      "id": "19e00918-ad25-4c6f-a44e-e6357e20526e",
+      "name": "DAREDEVIL",
+      "description": "Blinded in a childhood accident, attorney-at-law Matt Murdock protects Hell’s Kitchen as the masked vigilante, Daredevil.",
       "element": "fire"
     },
     {
-      "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
+      "id": "599a2f2c-45f4-4079-958c-792f72c279e8",
+      "name": " SPIDER-MAN",
+      "description": "With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man.",
       "element": "wind"
     },
     {
-      "id": 3,
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
+      "id": "63a408d0-edae-4ac6-8c6d-353973ac3e83",
+      "name": "DOC OCK",
+      "description": "Brilliant scientist and perennial foe of Spider-Man, Dr. Otto Octavius AKA Doc Ock must learn to free his mind from his tentacles in order to regain control.",
+      "element": "earth"
+    },
+    {
+      "id": "5c799352-f7e3-49c1-b0e1-66d9f52474f0",
+      "name": "TASKMASTER",
+      "description": "Taskmaster is a masked assassin who carries out deadly missions on behalf of the Red Room.",
       "element": "water"
     },
     {
-      "id": "01f79a5e-e11a-4ce9-9ae0-c336fd3ef55a",
-      "name": "Margo",
-      "element": "fire",
-      "description": "UX"
-    },
-    {
-      "id": "6c67a08c-713f-4187-b530-6e58dfd61705",
-      "name": "Dmytro Ihnatenko",
-      "description": "FIRE",
+      "id": "837dbd3f-b78b-42ec-8671-d4088a443b30",
+      "name": "AGENT ZERO",
+      "description": "Program’s covert operations unit Team X, changed his name to David North, and took the codename Maverick.",
       "element": "fire"
     }
   ],
