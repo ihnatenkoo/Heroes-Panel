@@ -1,0 +1,67 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "fire"
+    },
+    {
+      "id": 2,
+      "name": "Неизвестный герой",
+      "description": "Скрывающийся в тени",
+      "element": "wind"
+    },
+    {
+      "id": 3,
+      "name": "Морской герой",
+      "description": "Как аквамен, но не из DC",
+      "element": "water"
+    },
+    {
+      "id": "01f79a5e-e11a-4ce9-9ae0-c336fd3ef55a",
+      "name": "Margo",
+      "element": "fire",
+      "description": "UX"
+    },
+    {
+      "id": "f7d5518b-e542-41f6-950f-16142328db51",
+      "name": "Ян",
+      "description": "123",
+      "element": "water"
+    },
+    {
+      "id": "7d961b81-a54a-461a-aff6-5b8401428088",
+      "name": "Dmytro Ihnatenko",
+      "description": "777",
+      "element": "fire"
+    }
+  ],
+  "filters": [
+    {
+      "name": "all",
+      "label": "Все",
+      "className": "btn-outline-dark"
+    },
+    {
+      "name": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "name": "water",
+      "label": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "name": "wind",
+      "label": "Ветер",
+      "className": "btn-success"
+    },
+    {
+      "name": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
+    }
+  ]
+}
