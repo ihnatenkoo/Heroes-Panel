@@ -33,10 +33,17 @@ const HeroesAddForm = () => {
             element
         }
       
-        request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-            .then(console.log("OK"))
-            .then(dispatch(heroAdd(newHero)))
-            .catch(console.log("Error"))
+        const postHero = async () => {
+            await request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
+            dispatch(heroAdd(newHero))
+        }
+
+        try {
+            postHero();
+        }
+        catch (e) {
+            throw e;
+        }
       
         setName("");
         setDescription("");

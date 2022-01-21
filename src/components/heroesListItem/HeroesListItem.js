@@ -25,11 +25,14 @@ const HeroesListItem = ({id, name, description, element}) => {
             elementClassName = 'bg-warning bg-gradient';
     }
 
-    const onDeleteHero = (id) => {
-        request(`http://localhost:3001/heroes/${id}`, "DELETE")
-            .then(console.log("OK"))
-            .then(dispatch(heroDelete(id)))
-            .catch(console.log("Error"))
+    const onDeleteHero = async (id) => {
+        try {
+            await request(`http://localhost:3001/heroes/${id}`, "DELETE");
+            dispatch(heroDelete(id))
+        }
+        catch (e) {
+            throw e;
+        }
     }   
 
     return (
