@@ -1,34 +1,27 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { onFilterChange,  getAllFilters} from "../../actions";
-import { useHttp } from "../../hooks/http.hook";
-import { v4 as uuidv4 } from 'uuid';
+import { onFilterChange, fetchFilters} from "../heroesFilters/filtersSlice";
+import Spinner from "../spinner/Spinner";
+
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
 // Фильтры должны отображать только нужных героев при выборе
 // Активный фильтр имеет класс active
 
 const HeroesFilters = () => {
-    const {activeFilter, filters} = useSelector(state=> state.filters);
+    const {activeFilter, filters, filterLoadingStatus} = useSelector(state=> state.filters);
     const dispatch = useDispatch();
-    const {request} = useHttp();
    
     useEffect(() => {
-        getFilters();
+        dispatch(fetchFilters())
          // eslint-disable-next-line
     }, [])
 
-    const getFilters = () => {
-        request("http://localhost:3001/filters")
-            .then(console.log("OK"))             
-            .then(data => dispatch(getAllFilters(data)))
-            .catch(console.log("Error"))     
-    }
 
     const renderFilterBtn = (filters) => {
         return filters.map(item => 
             (<button 
-                key={uuidv4()}
+                key={item.id}
                 onClick={() => dispatch(onFilterChange(item.name))} 
                 className={`btn ${item.className} ${item.name === activeFilter   ? "active" : ""}`}>
                 {item.label}
@@ -40,7 +33,9 @@ const HeroesFilters = () => {
             <div className="card-body">
                 <p className="card-text">Отфильтруйте героев по элементам</p>
                 <div className="btn-group">
-                    {renderFilterBtn(filters)}
+                    {filterLoadingStatus === "loading" && <Spinner/>}  
+                    {filterLoadingStatus === "error" && "Ошибка загрузки списка фильтров"}  
+                    {filters.length > 0 && renderFilterBtn(filters)}
                 </div>
             </div>
         </div>

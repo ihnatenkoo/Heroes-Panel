@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { heroAdd } from "../../actions";
-import { v4 as uuidv4 } from 'uuid';
 import { useHttp } from "../../hooks/http.hook";
-
+import { useSelector, useDispatch } from "react-redux";
+import { heroAdd } from "../heroesList/heroesSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -28,7 +27,7 @@ const HeroesAddForm = () => {
     const onSubmit = (event) => {
         event.preventDefault();
         const newHero = {
-            id: uuidv4(),
+            id: nanoid(),
             name,
             description,
             element
@@ -48,7 +47,7 @@ const HeroesAddForm = () => {
         return filters.map(item => {
             if (item.name === "all") return null;
             return (
-                <option value={item.name} key={uuidv4()}>{item.label}</option>
+                <option value={item.name} key={item.id}>{item.label}</option>
             )
         })
     }
